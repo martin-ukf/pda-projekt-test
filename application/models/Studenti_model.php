@@ -16,4 +16,30 @@ class Studenti_model extends CI_Model {
 		}
 
 	}
+	// vlozenie zaznamu
+	public function insert($data = array()) {
+		$insert = $this->db->insert('studenti', $data);
+		if($insert){
+			return $this->db->insert_id();
+		}else{
+			return false;
+		}
+	}
+
+	// aktualizacia zaznamu
+	public function update($data, $id) {
+		if(!empty($data) && !empty($id)){
+			$update = $this->db->update('studenti', $data, array('id'=>$id));
+			return $update?true:false;
+		}else{
+			return false;
+		}
+	}
+
+	// odstranenie zaznamu
+	public function delete($id){
+		$delete = $this->db->delete('studenti',array('id'=>$id));
+		return $delete?true:false;
+	}
+
 }
