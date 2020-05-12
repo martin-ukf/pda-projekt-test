@@ -9,8 +9,12 @@
 					<p><?php echo !empty($znamky['id'])? $znamky['id']:''; ?></p>
 				</div>
 				<div class="form-group">
-					<label>Študent:</label>
+					<label>Študent nesprávne:</label>
 					<p><?php echo !empty($znamky['idstudent'])? $znamky['idstudent']:''; ?></p>
+				</div>
+				<div class="form-group">
+					<label>Študent správne:</label>
+					<p><?php echo !empty($znamky2['cele_meno'])? $znamky2['cele_meno']:''; ?></p>
 				</div>
 				<div class="form-group">
 					<label>Predmet:</label>

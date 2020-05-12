@@ -19,14 +19,14 @@ class Znamky_model extends CI_Model {
 
 	function ZobrazZnamkySpravne($id=""){
 		if(!empty($id)){
-			$this->db->select('znamky.id, CONCAT(meno," ", priezvisko) AS cele_meno, predmet, datum, znamka')
+			$this->db->select('znamky.id, CONCAT(meno," ", priezvisko) AS cele_meno, idstudent, predmet, datum, znamka')
 			->from('studenti')
 			->join('znamky', 'studenti.id = znamky.idstudent')
 			->where('znamky.id',$id);
 			$query = $this->db->get();
 			return $query->row_array();
 		}else{
-			$this->db->select('znamky.id, CONCAT(meno," ", priezvisko) AS cele_meno, predmet, datum, znamka')
+			$this->db->select('znamky.id, CONCAT(meno," ", priezvisko) AS cele_meno, idstudent, predmet, datum, znamka')
 				->from('studenti')
 				->join('znamky', 'studenti.id = znamky.idstudent');
 			$query = $this->db->get();
@@ -45,7 +45,7 @@ class Znamky_model extends CI_Model {
 			$dropdowns = $query->result();
 			foreach ($dropdowns as $dropdown)
 			{
-				$dropdownlist[$dropdown->id] = $dropdown->cele_name;
+				$dropdownlist[$dropdown->id] = $dropdown->cele_meno;
 			}
 			$dropdownlist[''] = 'Vyberte študenta';
 			return $dropdownlist;
