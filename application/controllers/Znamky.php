@@ -59,14 +59,14 @@ class Znamky extends CI_Controller
 			$this->form_validation->set_rules('znamka', 'Pole znamka', 'required');
 			$this->form_validation->set_rules('datum', 'Pole datum', 'required');
 			$this->form_validation->set_rules('predmet', 'Pole predmet', 'required');
-			$this->form_validation->set_rules('student', 'Pole student', 'required');
+			$this->form_validation->set_rules('idstudent', 'Pole student', 'required');
 
 			//priprava dat pre vlozenie
 			$postData = array(
 				'znamka' => $this->input->post('znamka'),
 				'datum' => $this->input->post('datum'),
 				'predmet' => $this->input->post('predmet'),
-				'student' => $this->input->post('student'),
+				'idstudent' => $this->input->post('idstudent'),
 			);
 
 			//validacia zaslanych dat
@@ -104,14 +104,14 @@ class Znamky extends CI_Controller
 			$this->form_validation->set_rules('znamka', 'Pole znamka', 'required');
 			$this->form_validation->set_rules('datum', 'Pole datum', 'required');
 			$this->form_validation->set_rules('predmet', 'Pole predmet', 'required');
-			$this->form_validation->set_rules('student', 'Pole student', 'required');
+			$this->form_validation->set_rules('idstudent', 'Pole student', 'required');
 
 			// priprava dat pre aktualizaciu
 			$postData = array(
 				'znamka' => $this->input->post('znamka'),
 				'datum' => $this->input->post('datum'),
 				'predmet' => $this->input->post('predmet'),
-				'student' => $this->input->post('student'),
+				'idstudent' => $this->input->post('idstudent'),
 			);
 
 			//validacia zaslanych dat
