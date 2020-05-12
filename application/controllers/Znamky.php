@@ -23,6 +23,7 @@ class Znamky extends CI_Controller
 		}
 
 		$data['znamky'] = $this->Znamky_model->ZobrazZnamky();
+		$data['znamky2'] = $this->Znamky_model->ZobrazZnamkySpravne();
 		$data['nazov'] = 'Zoznam známok';
 		//nahratie zoznamu studentov
 		$this->load->view('templates/header', $data);

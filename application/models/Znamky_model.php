@@ -16,6 +16,42 @@ class Znamky_model extends CI_Model {
 		}
 
 	}
+
+	function ZobrazZnamkySpravne($id=""){
+		if(!empty($id)){
+			$this->db->select('znamky.id, CONCAT(meno," ", priezvisko) AS cele_meno, predmet, datum, znamka')
+			->from('studenti')
+			->join('znamky', 'studenti.id = znamky.idstudent')
+			->where('znamky.id',$id);
+			$query = $this->db->get();
+			return $query->row_array();
+		}else{
+			$this->db->select('znamky.id, CONCAT(meno," ", priezvisko) AS cele_meno, predmet, datum, znamka')
+				->from('studenti')
+				->join('znamky', 'studenti.id = znamky.idstudent');
+			$query = $this->db->get();
+			return $query->result_array();
+		}
+
+	}
+
+	//  naplnenie selectu z tabulky studenti
+	public function NaplnDropdownStudenti($id = ""){
+		$this->db->order_by('priezvisko')
+			->select('id, CONCAT(meno," ", priezvisko) AS cele_meno')
+			->from('studenti');
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			$dropdowns = $query->result();
+			foreach ($dropdowns as $dropdown)
+			{
+				$dropdownlist[$dropdown->id] = $dropdown->cele_name;
+			}
+			$dropdownlist[''] = 'Vyberte študenta';
+			return $dropdownlist;
+		}
+	}
+
 	// vlozenie zaznamu
 	public function insert($data = array()) {
 		$insert = $this->db->insert('znamky', $data);
